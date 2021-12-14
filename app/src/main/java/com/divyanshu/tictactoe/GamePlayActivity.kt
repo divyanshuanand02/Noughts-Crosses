@@ -10,7 +10,11 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import kotlin.system.exitProcess
 
+
+
+
 var playerTurn = true
+var board = Array(size= 3){ arrayOfNulls<String>(size = 3)}
 class GamePlayActivity : AppCompatActivity() {
     lateinit var btn1: Button
     lateinit var btn2: Button
@@ -57,6 +61,11 @@ class GamePlayActivity : AppCompatActivity() {
         player1.clear()
         player2.clear()
         emptyCells.clear()
+        for(i in 0..2){
+            for(j in 0..2){
+                board[i][j] = ""
+            }
+        }
         activeuser = 1
         for (i in 1..9) {
             var ButtonSelected: Button?
@@ -107,6 +116,9 @@ class GamePlayActivity : AppCompatActivity() {
         val audio = MediaPlayer.create(this, R.raw.app_src_main_res_raw_poutch)
         if (activeuser == 1) {
             buttonSelected.text = "X"
+            var row = detectrow(buttonSelected)
+            var col = detectcol(buttonSelected)
+            board[row][col] = "X"
             buttonSelected.setTextColor(Color.parseColor("#EC0C0C"))
             player1.add(currCell)
             emptyCells.add(currCell)
@@ -122,6 +134,9 @@ class GamePlayActivity : AppCompatActivity() {
                 activeuser = 2
         } else {
             buttonSelected.text = "O"
+            var row = detectrow(buttonSelected)
+            val col = detectcol(buttonSelected)
+            board[row][col] = "O"
             audio.start()
             buttonSelected.setTextColor(Color.parseColor("#D22BB804"))
             activeuser = 1
@@ -136,29 +151,105 @@ class GamePlayActivity : AppCompatActivity() {
         }
     }
 
+    private fun detectrow(buttonSelected: Button): Int {
+        if(buttonSelected == btn1)
+            return 0
+        else if(buttonSelected == btn2)
+            return 0
+        else if(buttonSelected == btn3)
+            return 0
+        else if(buttonSelected == btn4)
+            return 1
+        else if(buttonSelected == btn5)
+            return 1
+        else if(buttonSelected == btn6)
+            return 1
+        else if(buttonSelected == btn7)
+            return 2
+        else if(buttonSelected == btn8)
+            return 2
+        else
+            return 2
+    }
+
+    private fun detectcol(buttonSelected: Button): Int {
+        if(buttonSelected == btn1)
+            return 0
+        else if(buttonSelected == btn2)
+            return 1
+        else if(buttonSelected == btn3)
+            return 2
+        else if(buttonSelected == btn4)
+            return 0
+        else if(buttonSelected == btn5)
+            return 1
+        else if(buttonSelected == btn6)
+            return 2
+        else if(buttonSelected == btn7)
+            return 0
+        else if(buttonSelected == btn8)
+            return 1
+        else
+            return 2
+    }
+
     private fun robot() {
-        val rnd = (1..9).random()
-        if(emptyCells.contains(rnd))
-            robot()
-        else{
-            val buttonSelected = when(rnd){
-                1 -> btn1
-                2 -> btn2
-                3 -> btn3
-                4 -> btn4
-                5 -> btn5
-                6 -> btn6
-                7 -> btn7
-                8 -> btn8
-                9 -> btn9
-                else -> {
-                    btn1
-                }
-            }
+       var x : Move = Minimax.findbestmove(board)
+        val r = x.row
+        val c = x.col
+        System.out.println(r)
+        System.out.println(c)
+//        board[r][c] = "O"
+        lateinit var buttonSelected : Button
+        var rnd : Int = 0
+
+        if(r == 0 && c == 0) {
+            buttonSelected = btn1
+            rnd = 1
+
+        }
+
+        else if(r == 0 && c == 1) {
+            buttonSelected = btn2
+            rnd = 2
+
+        }
+        else if(r == 0 && c == 2) {
+            buttonSelected = btn3
+            rnd = 3
+        }
+        else if(r == 1 && c == 0) {
+            buttonSelected = btn4
+            rnd = 4
+        }
+        else if(r == 1 && c == 1) {
+            buttonSelected = btn5
+            rnd = 5
+        }
+        else if(r == 1 && c == 2) {
+            buttonSelected = btn6
+            rnd = 6
+        }
+        else if(r == 2 && c == 0) {
+            buttonSelected = btn7
+            rnd = 7
+        }
+        else if(r == 2 && c == 1) {
+            buttonSelected = btn8
+            rnd = 8
+        }
+        else if(r == 2 && c == 3) {
+            buttonSelected = btn9
+            rnd = 9
+        }
+//        else{
+//           // buttonSelected = btn1
+//        //    rnd = 1
+//        }
             emptyCells.add(rnd)
-            val audio = MediaPlayer.create(this, R.raw.app_src_main_res_raw_poutch)
-            audio.start()
-            Handler().postDelayed(Runnable { audio.release() }, 500)
+//            val audio = MediaPlayer.create(this, R.raw.app_src_main_res_raw_poutch)
+//            audio.start()
+//            Handler().postDelayed(Runnable { audio.release() }, 500)
             buttonSelected.text = "O"
             buttonSelected.setTextColor(Color.parseColor("#D22BB804"))
             player2.add(rnd)
@@ -169,7 +260,6 @@ class GamePlayActivity : AppCompatActivity() {
             }
         }
 
-    }
 
     private fun checkWinner(): Int {
         val audio = MediaPlayer.create(this, R.raw.app_src_main_res_raw_success)
@@ -251,6 +341,11 @@ class GamePlayActivity : AppCompatActivity() {
         player1.clear()
         player2.clear()
         emptyCells.clear()
+        for(i in 0..2){
+            for(j in 0..2){
+                board[i][j]=""
+            }
+        }
         activeuser = 1
         for (i in 1..9) {
             var buttonselected: Button?
@@ -274,4 +369,5 @@ class GamePlayActivity : AppCompatActivity() {
             player2cnt.text = "Player1 : $player2count"
         }
     }
+
 }
