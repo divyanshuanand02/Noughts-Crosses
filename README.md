@@ -84,7 +84,7 @@ end
 
 ## Game Tree
 <p align="center">
-	<img src="Game Tree.png"></img>
+	<img src="Game Tree.jpg"></img>
 </p>
 **Explaination:**
 This image depicts all the possible paths that the game can take from the root board state. It is often called the Game Tree.
