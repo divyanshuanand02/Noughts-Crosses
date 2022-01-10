@@ -1,7 +1,7 @@
 # tic-tac-toe-minimax
 An implementation of Minimax AI Algorithm on Tic-Tac-Toe (or Noughts and Crosses) game.
 <p align="center">
-	<img src="TicTac.png"></img>
+	![TicTac](https://user-images.githubusercontent.com/54618261/148750972-b9866992-3eca-423a-aa34-6d6f7da0b0b9.png)
 </p>
 
 ## Introduction
