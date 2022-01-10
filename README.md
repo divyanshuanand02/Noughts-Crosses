@@ -1,5 +1,8 @@
 # tic-tac-toe-minimax
 An implementation of Minimax AI Algorithm on Tic-Tac-Toe (or Noughts and Crosses) game.
+<p align="center">
+	<img src="TicTac.png"></img>
+</p>
 
 ## Introduction
 Tic-Tac-Toe is a rather simply game with only 255,168 possible games that can be played. This number is trivial for today’s computers, that’s why Tic-Tac-Toe is considered to be a solved game which means the outcome can be predicted given any state. The game is so simple that we can generate the entire game tree without trouble, whereas in chess there are already 69,352,859,712,417 possible games that could’ve been played after just 10 moves.
