@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         player1.setOnClickListener {
             oneplayer = true
-            startActivity(Intent(this , GamePlayActivity::class.java))
+            startActivity(Intent(this , GamePlayActivity2::class.java))
         }
 
         player2.setOnClickListener {

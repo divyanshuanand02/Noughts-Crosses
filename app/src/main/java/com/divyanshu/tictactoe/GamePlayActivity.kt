@@ -128,9 +128,7 @@ class GamePlayActivity : AppCompatActivity() {
             val CheckWinner = checkWinner()
             if (CheckWinner == 1)
                 Handler().postDelayed(Runnable { resetgame() }, 2000)
-            else if (oneplayer) {
-                Handler().postDelayed(Runnable { robot() }, 500)
-            } else
+            else
                 activeuser = 2
         } else {
             buttonSelected.text = "O"
@@ -193,73 +191,73 @@ class GamePlayActivity : AppCompatActivity() {
             return 2
     }
 
-    private fun robot() {
-       var x : Move = Minimax.findbestmove(board)
-        val r = x.row
-        val c = x.col
-        System.out.println(r)
-        System.out.println(c)
-//        board[r][c] = "O"
-        lateinit var buttonSelected : Button
-        var rnd : Int = 0
-
-        if(r == 0 && c == 0) {
-            buttonSelected = btn1
-            rnd = 1
-
-        }
-
-        else if(r == 0 && c == 1) {
-            buttonSelected = btn2
-            rnd = 2
-
-        }
-        else if(r == 0 && c == 2) {
-            buttonSelected = btn3
-            rnd = 3
-        }
-        else if(r == 1 && c == 0) {
-            buttonSelected = btn4
-            rnd = 4
-        }
-        else if(r == 1 && c == 1) {
-            buttonSelected = btn5
-            rnd = 5
-        }
-        else if(r == 1 && c == 2) {
-            buttonSelected = btn6
-            rnd = 6
-        }
-        else if(r == 2 && c == 0) {
-            buttonSelected = btn7
-            rnd = 7
-        }
-        else if(r == 2 && c == 1) {
-            buttonSelected = btn8
-            rnd = 8
-        }
-        else if(r == 2 && c == 3) {
-            buttonSelected = btn9
-            rnd = 9
-        }
-//        else{
-//           // buttonSelected = btn1
-//        //    rnd = 1
+//    private fun robot() {
+//       var x : Move = Minimax.findbestmove(board)
+//        val r = x.row
+//        val c = x.col
+//        System.out.println(r)
+//        System.out.println(c)
+////        board[r][c] = "O"
+//        lateinit var buttonSelected : Button
+//        var rnd : Int = 0
+//
+//        if(r == 0 && c == 0) {
+//            buttonSelected = btn1
+//            rnd = 1
+//
 //        }
-            emptyCells.add(rnd)
+//
+//        else if(r == 0 && c == 1) {
+//            buttonSelected = btn2
+//            rnd = 2
+//
+//        }
+//        else if(r == 0 && c == 2) {
+//            buttonSelected = btn3
+//            rnd = 3
+//        }
+//        else if(r == 1 && c == 0) {
+//            buttonSelected = btn4
+//            rnd = 4
+//        }
+//        else if(r == 1 && c == 1) {
+//            buttonSelected = btn5
+//            rnd = 5
+//        }
+//        else if(r == 1 && c == 2) {
+//            buttonSelected = btn6
+//            rnd = 6
+//        }
+//        else if(r == 2 && c == 0) {
+//            buttonSelected = btn7
+//            rnd = 7
+//        }
+//        else if(r == 2 && c == 1) {
+//            buttonSelected = btn8
+//            rnd = 8
+//        }
+//        else if(r == 2 && c == 3) {
+//            buttonSelected = btn9
+//            rnd = 9
+//        }
+////        else{
+////           // buttonSelected = btn1
+////        //    rnd = 1
+////        }
+//            emptyCells.add(rnd)
 //            val audio = MediaPlayer.create(this, R.raw.app_src_main_res_raw_poutch)
 //            audio.start()
 //            Handler().postDelayed(Runnable { audio.release() }, 500)
-            buttonSelected.text = "O"
-            buttonSelected.setTextColor(Color.parseColor("#D22BB804"))
-            player2.add(rnd)
-            buttonSelected.isEnabled = false
-            var checkwinner = checkWinner()
-            if(checkwinner == 1){
-                Handler().postDelayed(Runnable { resetgame() }, 4000)
-            }
-        }
-
+//            buttonSelected.text = "O"
+//            buttonSelected.setTextColor(Color.parseColor("#D22BB804"))
+//            player2.add(rnd)
+//            buttonSelected.isEnabled = false
+//            var checkwinner = checkWinner()
+//            if(checkwinner == 1){
+//                Handler().postDelayed(Runnable { resetgame() }, 4000)
+//            }
+//        }
+//
 
     private fun checkWinner(): Int {
         val audio = MediaPlayer.create(this, R.raw.app_src_main_res_raw_success)
